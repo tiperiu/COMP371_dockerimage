@@ -41,6 +41,7 @@ Windows (PowerShell):
 * Clean up main directory
 * For run scripts, add checking if CODE_PATH exists
 * Add X Server instructions
+* Add GLFW test
 * Add definitions (container vs image, entrypoint, command)
 * Add warnings (overwriting your own files)
 * Multisource examples
