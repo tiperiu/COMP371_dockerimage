@@ -19,7 +19,6 @@ set(LIBRARIES
 )
 
 file(GLOB_RECURSE SRC LIST_DIRECTORIES false ${SOURCE_PATH}/*.cpp )
-#aux_source_directory(${SOURCE_PATH} SRC)
 
 message(STATUS "LIST OF SOURCEFILES")
 string(REPLACE ";" "\n" SOURCE_LIST "${SRC}")
