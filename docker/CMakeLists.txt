@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.11)
 
 set(PROJECT_NAME project_name CACHE STRING "Project Name")
-set(SOURCE_DIR /src/code CACHE PATH "Path to source files...")
+set(SOURCE_PATH /src/code CACHE PATH "Path to source files...")
 
 project(${PROJECT_NAME})
 
@@ -10,9 +10,22 @@ find_package(GLEW REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(glm REQUIRED)
 
-file(GLOB SRC ${SOURCE_DIR}/*.cpp)
+set(LIBRARIES
+    OpenGL::GL
+    OpenGL::GLU
+    GLEW
+    glfw
+    glm::glm
+)
+
+file(GLOB_RECURSE SRC LIST_DIRECTORIES false ${SOURCE_PATH}/*.cpp )
+#aux_source_directory(${SOURCE_PATH} SRC)
+
+message(STATUS "LIST OF SOURCEFILES")
+string(REPLACE ";" "\n" SOURCE_LIST "${SRC}")
+message(${SOURCE_LIST})
 
 add_executable(${PROJECT_NAME} ${SRC})
 
-target_link_libraries(${PROJECT_NAME} OpenGL::GL GLEW glfw glm::glm)
+target_link_libraries(${PROJECT_NAME} ${LIBRARIES})
 
