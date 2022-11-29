@@ -18,6 +18,7 @@ The code path can be a symlink.
 
 ## Example
 
+Linux:
 ```
 # Build
 ./build_docker.sh
@@ -26,7 +27,21 @@ The code path can be a symlink.
 ./run.sh capsule1 $PWD/COMP371_all/Lab_capsules/capsule1/code
 ```
 
+Windows (PowerShell):
+```
+# Build
+.\build_docker.ps1
+
+# Run
+.\run.ps1 capsule1 ${pwd}\COMP371_all\Lab_capsules\capsule1\code
+```
+
 ## TODO
 
+* Clean up main directory
+* For run scripts, add checking if CODE_PATH exists
+* Add X Server instructions
+* Add definitions (container vs image, entrypoint, command)
+* Add warnings (overwriting your own files)
 * Multisource examples
 
