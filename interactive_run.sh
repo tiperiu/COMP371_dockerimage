@@ -16,7 +16,7 @@ CODE_PATH=$1 # Must be absolute path
 
 docker run --name COMP371 \
     --rm \
-    -v $CODE_PATH:/src/code \
+    -v $CODE_PATH:/COMP371 \
     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
     -e DISPLAY=$DISPLAY \
     --entrypoint /bin/bash \
