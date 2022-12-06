@@ -6,9 +6,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends bu
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install libeigen3-dev
 
-#RUN apt-get update
+RUN apt-get update
 
-#RUN DEBIAN_FRONTEND=noninteractive apt-get -y install emacs
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install emacs
 
 RUN apt-get clean
 
