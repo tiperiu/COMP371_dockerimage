@@ -5,7 +5,7 @@ This script opens the comp371:W22 Docker container with the given path bound to
 Author: Jonathan Llewellyn <inexistenz@gmail.com> 2022-12-12
 #>
 
-. .\get_ip.ps1
+. .\utils.ps1
 
 Function Usage
 {

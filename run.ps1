@@ -6,7 +6,7 @@ argument.
 Author: Jonathan Llewellyn <inexistenz@gmail.com> 2022-12-12
 #>
 
-. .\get_ip.ps1
+. .\utils.ps1
 
 Function Usage
 {
