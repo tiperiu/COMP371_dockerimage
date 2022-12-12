@@ -1,1 +1,5 @@
-docker rm comp371
+<#
+Deletes the COMP371 container
+#>
+
+docker rm COMP371

@@ -1,19 +1,52 @@
-$CODE_PATH=$args[0] # Must be absolute path
+<#
+This script opens the comp371:W22 Docker container with the given path bound to
+`/COMP371` and opens and interactive Bash shell
 
-# Get WSL IP Address for X Server
+Author: Jonathan Llewellyn <inexistenz@gmail.com> 2022-12-12
+#>
 
-[array] $IP_INFO = ipconfig
+. .\get_ip.ps1
 
-$IP_LINE = $IP_INFO[3]
-$SECTION = $IP_INFO -like "*Ethernet adapter vEthernet (WSL):*"
+Function Usage
+{
+<#
+.SYNOPSIS
 
-$SECION_IDX = $IP_INFO.IndexOf($SECTION)
-$IPV4_LINE = $($IP_INFO[$($SECION_IDX..$($SECION_IDX+5))]) -like "*IPv4 Address*"
+Print usage and exits with 1
+#>
 
-$WSL_IP_ADDR = $($($IPV4_LINE -split ":")[1]).Trim()
+    Write-Host "Usage: $PSCommandPath /path/to/code"
+    exit 1
+}
 
-# Set $DISPLAY variable (Defaulting to 0.0)
-$DISPLAY = "${WSL_IP_ADDR}:0.0"
+Function Main
+{
+<#
+.SYNOPSIS
+
+Run the container with an interactive Bash shell and X11 Display binding.
+
+.INPUTS
+
+System.String. The Path to bind to `/COMP371` in container. Must be absolute.
+#>
+    param([string]$CODE_PATH)
+
+    if(-Not $(Check-Path "${CODE_PATH}"))
+    {
+        Usage
+    }
+
+    $WSL_IP_ADDR = Get-WSL-IP
+
+    if (-Not "${WSL_IP_ADDR}") 
+    {
+        Write-Host "Error: No WSL IP address detected"
+        exit 1
+    }
+
+    # Set $DISPLAY variable (Defaulting to 0.0)
+    $DISPLAY = "${WSL_IP_ADDR}:0.0"
 
 # Breaking down the docker command:
 #
@@ -26,4 +59,7 @@ $DISPLAY = "${WSL_IP_ADDR}:0.0"
 #        -it \ # Use interactive and TTY terminal
 #        comp371:W22 # Name of the image (main positional argument for docker run)
 
-docker run --name COMP371 --rm -v ${CODE_PATH}:/src/code -e DISPLAY=${DISPLAY} --entrypoint /bin/bash -it comp371:W22
+    docker run --name COMP371 --rm -v ${CODE_PATH}:/COMP371 -e DISPLAY=${DISPLAY} --entrypoint /bin/bash -it comp371:W22
+}
+
+Main $args[0]
