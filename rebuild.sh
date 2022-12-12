@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
+# Delete the COMP371 container and image and rebuild
 
-docker rm comp371
-docker rmi comp371:W22
+./delete_container.sh
 
-docker build . -f Dockerfile.comp371 -t comp371:W22
+docker rmi comp371:W22 # Delete image
+
+./build_docker.sh
