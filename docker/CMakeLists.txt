@@ -9,6 +9,7 @@ find_package(OpenGL REQUIRED COMPONENTS OpenGL)
 find_package(GLEW REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(glm REQUIRED)
+find_package(Eigen3 REQUIRED)
 
 set(LIBRARIES
     OpenGL::GL
@@ -16,6 +17,7 @@ set(LIBRARIES
     GLEW
     glfw
     glm::glm
+    Eigen3::Eigen
 )
 
 file(GLOB_RECURSE SRC LIST_DIRECTORIES false ${SOURCE_PATH}/*.cpp )
