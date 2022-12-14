@@ -5,7 +5,7 @@
 #
 # Author: Jonathan Llewellyn <inexistenz@gmail.com> 2022-12-12
 
-source check_path.sh
+source "$(dirname ${BASH_SOURCE[0]})/utils.sh"
 
 ###############################################################################
 # Print usage and exits with 1

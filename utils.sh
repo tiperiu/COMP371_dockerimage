@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# check_path function
+# Utilities: contains the check_path function
 #
 # Author: Jonathan Llewellyn <inexistenz@gmail.com> 2022-12-12
 
