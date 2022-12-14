@@ -53,7 +53,7 @@ System.String. The Path to bind to `/COMP371` in container. Must be absolute.
 #    docker run \
 #        --name COMP371 \ # Name of the container
 #        --rm \ # Delete container after exiting
-#        -v $CODE_PATH:/src/code \ # Binds CODE_PATH to /src/code inside the container
+#        -v $CODE_PATH:/COMP371 \ # Binds CODE_PATH to /src/code inside the container
 #        -e DISPLAY=$DISPLAY \ # Required for X Server
 #        --entrypoint /bin/bash  # Enter to bash terminal
 #        -it \ # Use interactive and TTY terminal

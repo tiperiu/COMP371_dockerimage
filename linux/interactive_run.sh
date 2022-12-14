@@ -41,7 +41,7 @@ function main() {
 # docker run \
 #     --name COMP371 \ # Name of the container
 #     --rm \ # Delete container after exiting
-#     -v $CODE_PATH:/src/code \ # Binds CODE_PATH to /src/code inside the container
+#     -v $CODE_PATH:/COMP371 \ # Binds CODE_PATH to /src/code inside the container
 #     -v /tmp/.X11-unix:/tmp/.X11-unix:rw \ # Required for X Server use on Unix/Linux
 #     -e DISPLAY=$DISPLAY \ # Required for X Server use on Unix/Linux
 #     --entrypoint /bin/bash  # Enter through bash shell
