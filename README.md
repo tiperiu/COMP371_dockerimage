@@ -76,13 +76,21 @@ For Windows use a PowerShell terminal from this directory:
 
 Linux usually has an X Server running for its GUI system by default.
 
-It may be necessary to give it permission to let external GUI applications call the X Server. To do this type the following:
+It may be necessary to give it permission to let external GUI applications call
+the X Server. To do this type the following:
 
 ```bash
 xhost +SI:linuxuser:root
 ```
 
-To restore defaults
+And then run the following in a terminal:
+
+```bash
+docker build -f Dockerfile.xeyes . -t xeyes
+docker run --rm --name xeyes -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:rw xeyes:latest
+```
+
+To restore defaults:
 
 ```bash
 xhost -
@@ -117,7 +125,9 @@ Get your WSL IP address:
 ipconfig
 ```
 
-Under the `Ethernet adapter vEthernet (WSL):` header there should be a line containing `IPv4 Address`. (This automated in the `interactive_run.ps1` and `run.ps1` scripts)
+Under the `Ethernet adapter vEthernet (WSL):` header there should be a line
+containing `IPv4 Address`. (This automated in the `interactive_run.ps1` and
+`run.ps1` scripts)
 
 And then run the following in the PowerShell:
 
@@ -130,6 +140,7 @@ This creates a simple Docker image and runs a container that only contains the
 `xeyes` application as seen below.
 
 ![xeyes](images/xeyes.png)
+
 
 ## Running
 
@@ -203,10 +214,4 @@ docker image prune
 `delete_container.{sh,ps1}`: deletes the container named `COMP371`
 `delete_image.{sh,ps1}`: deletes the image named `comp371:W22`
 `rebuild.{sh,ps1}`: deletes the container and image and rebuilds them
-
-## TODO
-
-* Clean up main directory
-* Add X Server instructions
-* Add GLFW test
 
