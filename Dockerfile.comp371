@@ -1,24 +1,32 @@
+# The base operating system to use
 FROM ubuntu:20.04
 
-RUN apt-get update
+# Update the install list
+RUN apt-get update -y
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends build-essential bash xserver-xorg-dev libx11-dev libgl1-mesa-dev libglew-dev libglfw3-dev libglm-dev cmake gcc
+# Install basic libraries and programs
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends build-essential bash xserver-xorg-dev libx11-dev libgl1-mesa-dev libglew-dev libglfw3-dev libglm-dev libeigen3-dev cmake gcc git
+# Install text editors
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends --fix-missing emacs vim nano
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install libeigen3-dev
-
-RUN apt-get update
-
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install emacs
-
+# Clean up to reduce image size
 RUN apt-get clean
 
+# Create script directory
 WORKDIR /scripts
 
-COPY docker/build.sh .
+# Copy build_and_run.sh script to image
+COPY docker/build_and_run.sh .
 
-WORKDIR /COMP371/
+# Create examples folder
+WORKDIR /examples
 
-#COPY docker/CMakeLists.txt .
+# Add standard CMakeLists.txt to examples folder
+COPY docker/CMakeLists.txt .
 
-ENTRYPOINT ["/scripts/build.sh"]
+# Create default folder
+WORKDIR /COMP371
+
+# Entrypoint to automatically build and run linked folder code
+ENTRYPOINT ["/scripts/build_and_run.sh"]
 
