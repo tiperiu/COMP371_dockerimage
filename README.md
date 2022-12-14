@@ -90,7 +90,46 @@ xhost -
 
 #### Windows
 
-To set up the X Server on windows please check setting up the X Server
+[Xming](https://sourceforge.net/projects/xming/) or [VcXsrv](https://sourceforge.net/projects/vcxsrv/) should already be installed on the H962 an H966 machines.
+
+Then run XLaunch
+
+1. Select **Multiple Windows**
+
+![XLaunch Multiple Windows](images/XLaunch_1_multiple_windows.png)
+
+2. Set **Display** to **0**
+
+![XLaunch Display 0](images/XLaunch_2_display_0.png)
+
+3. Select **Start no client**
+
+![XLaunch Start no client](images/XLaunch_3_start_no_client.png)
+
+4. Check **Disable Access Control**
+
+![XLaunch Display access control](images/XLaunch_4_display_access_control.png)
+
+5. Test the Server
+
+Get your WSL IP address:
+```powershell
+ipconfig
+```
+
+Under the `Ethernet adapter vEthernet (WSL):` header there should be a line containing `IPv4 Address`. (This automated in the `interactive_run.ps1` and `run.ps1` scripts)
+
+And then run the following in the PowerShell:
+
+```powershell
+docker build -f Dockerfile.xeyes . -t xeyes
+docker run --rm --name xeyes -e DISPLAY=<your_IPv4_address>:0.0 xeyes:latest
+```
+
+This creates a simple Docker image and runs a container that only contains the
+`xeyes` application as seen below.
+
+![xeyes](images/xeyes.png)
 
 ## Running
 
@@ -98,14 +137,12 @@ To set up the X Server on windows please check setting up the X Server
 takes a path to your code as an argument to link to `/COMP371` inside the
 container. You can build your code inside this environment and run it.
 
-
-*(This may require an update)*
 `run.{sh,ps1}` will automatically build and run the code attached to
 `/COMP371`. It builds the code using an the CMakeLists file contained inside
 the Docker image and names the program after the first parameter given to the
 script.
 
-### Example
+### Examples
 
 #### Linux
 
@@ -115,7 +152,6 @@ script.
 
 # Run
 ./linux/run.sh capsule1 $PWD/COMP371_all/Lab_capsules/capsule1/code
-
 ```
 
 #### Windows (PowerShell)
@@ -126,7 +162,20 @@ script.
 
 # Run
 .\windows\run.ps1 capsule1 ${pwd}\COMP371_all\Lab_capsules\capsule1\code
+```
 
+You can also test that GLFW is working with the simple GLFWTest code
+
+#### Linux
+
+```bash
+./linux/run.sh GLFWTest $PWD/GLFWTest
+```
+
+#### Windows (PowerShell)
+
+```powershell
+.\windows\run.ps1 GLFWTest ${pwd}\GLFWTest
 ```
 
 ## Warnings
