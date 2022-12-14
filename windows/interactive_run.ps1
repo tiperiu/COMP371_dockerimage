@@ -5,7 +5,7 @@ This script opens the comp371:W22 Docker container with the given path bound to
 Author: Jonathan Llewellyn <inexistenz@gmail.com> 2022-12-12
 #>
 
-. .\utils.ps1
+. $PSScriptRoot\utils.ps1
 
 Function Usage
 {

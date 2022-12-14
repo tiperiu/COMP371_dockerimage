@@ -6,7 +6,7 @@ argument.
 Author: Jonathan Llewellyn <inexistenz@gmail.com> 2022-12-12
 #>
 
-. .\utils.ps1
+. $PSScriptRoot\utils.ps1
 
 Function Usage
 {
