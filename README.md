@@ -126,8 +126,8 @@ ipconfig
 ```
 
 Under the `Ethernet adapter vEthernet (WSL):` header there should be a line
-containing `IPv4 Address`. (This automated in the `interactive_run.ps1` and
-`run.ps1` scripts)
+containing `IPv4 Address`.
+*(This is automated in the `interactive_run.ps1` and `run.ps1` scripts)*
 
 And then run the following in the PowerShell:
 
