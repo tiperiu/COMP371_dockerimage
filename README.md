@@ -142,6 +142,12 @@ to make sure there are backups.
 Remember to delete your images when they are done as they can take up a lot of
 space on the hard drive. the `delete_image.{sh,ps1}` script can be used
 
+You can also clear images that are no longer in use by typing the following into either Bash or PowerShell:
+
+```bash
+docker image prune
+```
+
 ## Other scripts
 
 `utils.{sh,ps1}`: contains utility functions for the `interactive_run.{sh,ps1}` and `run.{sh,ps1}` scripts
@@ -154,4 +160,4 @@ space on the hard drive. the `delete_image.{sh,ps1}` script can be used
 * Clean up main directory
 * Add X Server instructions
 * Add GLFW test
-* Rename check_path.sh to utils.sh
+
