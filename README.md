@@ -210,8 +210,8 @@ docker image prune
 
 ## Other scripts
 
-`utils.{sh,ps1}`: contains utility functions for the `interactive_run.{sh,ps1}` and `run.{sh,ps1}` scripts
-`delete_container.{sh,ps1}`: deletes the container named `COMP371`
-`delete_image.{sh,ps1}`: deletes the image named `comp371:W22`
-`rebuild.{sh,ps1}`: deletes the container and image and rebuilds them
+* `utils.{sh,ps1}`: contains utility functions for the `interactive_run.{sh,ps1}` and `run.{sh,ps1}` scripts
+* `delete_container.{sh,ps1}`: deletes the container named `COMP371`
+* `delete_image.{sh,ps1}`: deletes the image named `comp371:W22`
+* `rebuild.{sh,ps1}`: deletes the container and image and rebuilds them
 
