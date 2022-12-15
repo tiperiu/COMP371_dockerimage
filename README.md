@@ -50,7 +50,7 @@ systemctl start docker
 
 #### Windows:
 
-Open Docker from the start menu. It should show up in the system tray as well.
+Open Docker from the Start Menu.
 
 ### 1: Build
 
