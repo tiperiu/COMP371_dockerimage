@@ -46,27 +46,27 @@ System.String. The Path to check.
 
 .OUTPUTS
 
-System.Bool. True if path is a valid directory. False otherwise.
+System.Bool. $true if path is a valid directory. $false otherwise.
 #>
     param([string]$PATH_TO_CHECK)
 
     if (-Not "${PATH_TO_CHECK}")
     {
         Write-Host "Error: no path provided"
-        return False
+        return $false
     }
 
     if (-Not $(Test-Path -Path "${PATH_TO_CHECK}"))
     {
         Write-Host "Error: \"${PATH_TO_CHECK}\" does not exist"
-        return False
+        return $false
     }
 
     if (-Not $(Test-Path -Path "${PATH_TO_CHECK}" -PathType Container))
     {
-        Write-Host "Error: \"${PATH_TO_CHECK}\" is not a directory" >
-        return False
+        Write-Host "Error: \"${PATH_TO_CHECK}\" is not a directory"
+        return $false
     }
 
-    return True
+    return $true
 }
