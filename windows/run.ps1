@@ -69,7 +69,7 @@ System.String. Path to bind to `/COMP371` in container. Must be absolute.
     docker run --name COMP371 --rm -v ${CODE_PATH}:/COMP371 -e DISPLAY=${DISPLAY} comp371:W22 $PROJECT_NAME
 }
 
-if ($args.Count != 2)
+if ($args.Count -ne 2)
 {
     Usage
 }
