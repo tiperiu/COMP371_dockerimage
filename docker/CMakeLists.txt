@@ -22,11 +22,19 @@ set(LIBRARIES
 
 file(GLOB_RECURSE SRC LIST_DIRECTORIES false ${SOURCE_PATH}/*.cpp )
 
-message(STATUS "LIST OF SOURCEFILES")
+message(STATUS "LIST OF SOURCEFILES...")
 string(REPLACE ";" "\n" SOURCE_LIST "${SRC}")
 message(${SOURCE_LIST})
 
-add_executable(${PROJECT_NAME} ${SRC})
+# Add _bin suffix to prevent name clash
+add_executable("${PROJECT_NAME}_bin" ${SRC})
 
-target_link_libraries(${PROJECT_NAME} ${LIBRARIES})
+target_link_libraries("${PROJECT_NAME}_bin" ${LIBRARIES})
+
+# Set output to use original input name
+set_target_properties("${PROJECT_NAME}_bin"
+    PROPERTIES
+        OUTPUT_NAME "${PROJECT_NAME}"
+        RUNTIME_OUTPUT_NAME "${PROJECT_NAME}"
+)
 
