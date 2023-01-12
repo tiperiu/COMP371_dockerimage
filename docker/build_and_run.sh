@@ -6,7 +6,7 @@ PROJECT_NAME="$1"
 SOURCE_PATH=/COMP371
 
 # List source paths
-echo "Listing "${SOURCE_PATH} Contents..."
+echo "Listing ${SOURCE_PATH} Contents..."
 ls -Rl ${SOURCE_PATH}/*
 
 # Build
