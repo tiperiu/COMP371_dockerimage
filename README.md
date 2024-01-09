@@ -70,6 +70,35 @@ For Windows use a PowerShell terminal from this directory:
 ./windows/build_docker.ps1
 ```
 
+**NOTE:** If an error that looks like the following occurs:
+
+```powershell
+.\windows\build_docker.ps1 : File C:\Users\stpopa\Desktop\COMP371_dockerimage\windows\build_docker.ps1 cannot be loaded
+because running scripts is disabled on this system. For more information, see about_Execution_Policies at
+https:/go.microsoft.com/fwlink/?LinkID=135170.
+At line:1 char:1
++ .\windows\build_docker.ps1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+```
+
+PowerShell's execution policy needs to be changed or bypassed.
+
+The following will set the execution policy to unrestricted for the remainder
+of the session for the current user. This allows the user to run the rest of
+the PowerShell scripts.
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
+```
+
+After that command the script should be executed again and complete without
+error.
+
+From more information see:
+[https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy)
+
 ### 2: Set up X Server
 
 #### Linux
