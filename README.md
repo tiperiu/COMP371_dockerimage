@@ -96,8 +96,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 After that command the script should be executed again and complete without
 error.
 
-From more information see:
-[https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy)
+From more information see: [PowerShell's Set-ExecutionPolicy Documentation](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 ### 2: Set up X Server
 
