@@ -17,12 +17,12 @@ System.String. The IP address of the WSL. Empty string if not found.
 #>
 
     [array] $IP_INFO = ipconfig
-
-    $SECTION = $IP_INFO -like "*Ethernet adapter vEthernet (WSL):*"
+    
+    $SECTION = $IP_INFO -like "*Ethernet adapter vEthernet (WSL*"
 
     if (-Not $SECTION)
     {
-        return ""
+		return ""		
     }
 
     $SECION_IDX = $IP_INFO.IndexOf($SECTION)
