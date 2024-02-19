@@ -22,7 +22,7 @@ System.String. The IP address of the WSL. Empty string if not found.
 
     if (-Not $SECTION)
     {
-		return ""
+        return ""
     }
 
     $SECION_IDX = $IP_INFO.IndexOf($SECTION)
