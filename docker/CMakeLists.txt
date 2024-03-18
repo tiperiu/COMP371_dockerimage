@@ -18,6 +18,7 @@ set(LIBRARIES
     glfw
     glm::glm
     Eigen3::Eigen
+    pthread
 )
 
 file(GLOB_RECURSE SRC LIST_DIRECTORIES false ${SOURCE_PATH}/*.cpp )
